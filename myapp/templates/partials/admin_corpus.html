@@ -1,0 +1,177 @@
+<div data-page="corpus">
+{% load static %}
+<div class="header">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h2><i class="bi bi-file-earmark-code"></i> Gestión de Corpus JSON</h2>
+            <p class="text-muted mb-0">Administra los archivos de datos del sistema</p>
+        </div>
+        <a href="{% url 'admin_corpus_upload' %}" class="btn btn-utpl" data-link>
+            <i class="bi bi-upload"></i> Subir Nuevo Corpus
+        </a>
+    </div>
+</div>
+
+<!-- Filtros -->
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-4">
+                <select name="corpus_type" class="form-select">
+                    <option value="">Todos los tipos</option>
+                    <option value="becas">Becas</option>
+                    <option value="faqs">FAQs</option>
+                    <option value="general">General</option>
+                    <option value="custom">Personalizado</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select name="is_active" class="form-select">
+                    <option value="">Todos los estados</option>
+                    <option value="true">Activos</option>
+                    <option value="false">Inactivos</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-secondary">
+                    <i class="bi bi-filter"></i> Filtrar
+                </button>
+                <a href="{% url 'admin_corpus' %}" class="btn btn-outline-secondary" data-link>
+                    <i class="bi bi-x-circle"></i> Limpiar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Lista de Corpus -->
+<div class="card">
+    <div class="card-body">
+
+        {% if corpus_list %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Estado</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Versión</th>
+                        <th>Registros</th>
+                        <th>Tamaño</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for corpus in corpus_list %}
+                    <tr>
+                        <td>
+                            {% if corpus.is_active %}
+                                <span class="badge bg-success">Activo</span>
+                            {% else %}
+                                <span class="badge bg-secondary">Inactivo</span>
+                            {% endif %}
+                        </td>
+                        <td><strong>{{ corpus.name }}</strong></td>
+                        <td>{{ corpus.get_corpus_type_display }}</td>
+                        <td>{{ corpus.version|default:"-" }}</td>
+                        <td>{{ corpus.records_count|default:"-" }}</td>
+                        <td>{{ corpus.file_size|filesizeformat }}</td>
+                        <td>{{ corpus.created_at|date:"d/m/Y H:i" }}</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a href="{% url 'admin_corpus_view' pk=corpus.pk %}" class="btn btn-info" title="Ver" data-link>
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a href="{% url 'admin_corpus_edit' pk=corpus.pk %}" class="btn btn-warning" title="Editar" data-link>
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                {% if corpus.file %}
+                                    <a href="{{ corpus.file.url }}" class="btn btn-success" title="Descargar" download>
+                                        <i class="bi bi-download"></i>
+                                    </a>
+                                {% endif %}
+                                <form method="post" action="{% url 'admin_corpus_toggle' pk=corpus.pk %}" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-secondary" title="{% if corpus.is_active %}Desactivar{% else %}Activar{% endif %}">
+                                        <i class="bi {% if corpus.is_active %}bi-pause{% else %}bi-play{% endif %}"></i>
+                                    </button>
+                                </form>
+                                <button type="button" class="btn btn-danger btn-delete-corpus" data-corpus-id="{{ corpus.pk }}" data-corpus-name="{{ corpus.name }}" title="Eliminar">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <!-- Mensaje cuando no hay corpus -->
+        <div class="text-center py-5">
+            <i class="bi bi-inbox" style="font-size: 4rem; color: #ccc;"></i>
+            <p class="text-muted mt-3">No hay corpus JSON registrados.</p>
+
+            <a href="{% url 'admin_corpus_upload' %}" class="btn btn-utpl" data-link>
+                <i class="bi bi-upload"></i> Subir Primer Corpus
+            </a>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<!-- Modal único de eliminación (fuera del loop) -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar Eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de eliminar el corpus <strong id="deleteCorpusName"></strong>?
+                <br><br>
+                <span class="text-danger">Esta acción no se puede deshacer.</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form method="post" id="deleteCorpusForm" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Manejar eliminación de corpus
+document.addEventListener('DOMContentLoaded', initCorpusDelete);
+document.addEventListener('spa:navigate', initCorpusDelete);
+
+function initCorpusDelete() {
+    const deleteButtons = document.querySelectorAll('.btn-delete-corpus');
+    const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+    const corpusNameSpan = document.getElementById('deleteCorpusName');
+    const deleteForm = document.getElementById('deleteCorpusForm');
+    
+    deleteButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const corpusId = this.getAttribute('data-corpus-id');
+            const corpusName = this.getAttribute('data-corpus-name');
+            
+            // Actualizar contenido del modal
+            corpusNameSpan.textContent = corpusName;
+            deleteForm.action = `/admin-panel/corpus/${corpusId}/delete/`;
+            
+            // Mostrar modal
+            modal.show();
+        });
+    });
+}
+</script>
+</div>

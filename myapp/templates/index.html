@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replica UTPL Responsiva</title>
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- ICONOS BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- FUENTE ROBOTO UTPL -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap">
+
+    <!-- ESTILOS PRINCIPALES -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- ESTILOS DEL CHATBOT -->
+    <link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
+    
+    <!-- ESTILOS ADICIONALES (para imagen de fondo) -->
+    <style>
+        .hero {
+            background-image: url("{% static 'img/becas cabecera-100.jpeg' %}");
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ▬▬▬▬▬▬▬ BARRA SUPERIOR ▬▬▬▬▬▬▬ -->
+    <div class="banner">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <div class="left-links d-flex align-items-center gap-3">
+                <span>UTPL EN LÍNEA</span>
+                <span>EVA</span>
+                <span>MAIL</span>
+            </div>
+
+            <div class="social-icons d-flex align-items-center gap-3">
+                <i class="bi bi-facebook"></i>
+                <i class="bi bi-twitter"></i>
+                <i class="bi bi-youtube"></i>
+                <i class="bi bi-instagram"></i>
+                <a href="{% url 'admin_panel' %}" style="color: inherit; text-decoration: none;">
+                    <i class="bi bi-circle-fill"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ▬▬▬▬▬▬▬ HEADER PRINCIPAL ▬▬▬▬▬▬▬ -->
+    <nav class="navbar navbar-expand-lg header-wrapper">
+        <div class="container">
+
+            <!-- LOGO -->
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/logo.png' %}" alt="Logo UTPL" class="logo-utpl">
+            </a>
+
+            <!-- BOTÓN HAMBURGUESA -->
+            <button class="navbar-toggler bg-light" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navMain"
+                    aria-controls="navMain" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- MENÚ -->
+            <div class="collapse navbar-collapse justify-content-end" id="navMain">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link text-white" href="#">INICIO</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">CONDICIONES GENERALES</a></li>
+                    <li class="nav-item ms-2"><a class="btn-yellow" href="#">POSTULAR/RENOVAR</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- ▬▬▬▬▬▬▬ HERO ▬▬▬▬▬▬▬ -->
+    <section class="hero"></section>
+
+    <!-- ▬▬▬▬▬▬▬ FOOTER ▬▬▬▬▬▬▬ -->
+    <footer class="footer-utpl">
+
+        <div class="container">
+
+            <div class="row align-items-center py-5">
+
+                <!-- COLUMNA 1 -->
+                <div class="col-lg-3 col-md-12 mb-4 text-lg-start text-center">
+                    <img src="{% static 'img/logo.png' %}" alt="Logo UTPL" class="logo-utpl">
+                    <div class="footer-logo-bar"></div>
+                </div>
+
+                <!-- COLUMNA 2 -->
+                <div class="col-lg-5 col-md-12 mb-4">
+                    <h4 class="footer-title">¿Necesitas más información sobre becas?</h4>
+                    <ul class="footer-list">
+                        <li><i class="bi bi-chevron-right"></i><strong> Teléfonos:</strong> 07 370 1444, ext. 2647 / 2786 / 2642 / 2474</li>
+                        <li><i class="bi bi-chevron-right"></i> Unidad de Bienestar Universitario</li>
+                        <li><i class="bi bi-chevron-right"></i> Dirección General de Misiones Universitarias</li>
+                    </ul>
+                </div>
+
+                <!-- COLUMNA 3 -->
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <h4 class="footer-title">Contactos</h4>
+                    <h5 class="footer-subtitle">Ecuador</h5>
+                    <ul class="footer-list">
+                        <li><i class="bi bi-geo-alt-fill"></i> San Cayetano Alto - Loja</li>
+                        <li><i class="bi bi-geo-alt-fill"></i> Centros UTPL</li>
+                        <li><i class="bi bi-envelope-fill"></i> Buzón de consultas</li>
+                        <li><i class="bi bi-telephone-fill"></i> 1800 88 75 88</li>
+                        <li><i class="bi bi-whatsapp"></i> 099 956 5400</li>
+                        <li><i class="bi bi-telephone-fill"></i> PBX: 07 370 1444</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PIE INFERIOR -->
+        <div class="copyright">
+            <div class="layout-1 blocks d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="mb-2 mb-md-0">© 2025 UTPL - Todos los derechos reservados</p>
+                <div class="footer-links">
+                    <a href="#">Oferta académica</a>
+                    <a href="#">Becas</a>
+                    <a href="#">Admisiones</a>
+                    <a href="#">Contacto</a>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- ▬▬▬▬▬▬▬ BURBUJA DEL CHATBOT ▬▬▬▬▬▬▬ -->
+    <div id="chatbot-btn">
+        <i class="bi bi-chat-dots-fill"></i>
+    </div>
+
+    <!-- ▬▬▬▬▬▬▬ VENTANA DEL CHATBOT ▬▬▬▬▬▬▬ -->
+    <div id="chatbot-box">
+
+        <div id="chatbot-header">
+            <span class="chat-title">
+                <i class="bi bi-robot"></i> Asistente Virtual
+            </span>
+            <span id="chatbot-close">&times;</span>
+        </div>
+
+        <div id="chatbot-messages"></div>
+
+        <div id="chatbot-input-area">
+            <input id="chatbot-input" type="text" placeholder="Escribe tu mensaje...">
+
+            <!-- MIC -->
+            <button id="chatbot-voice">
+                <i class="bi bi-mic-fill"></i>
+            </button>
+
+            <button id="chatbot-send">Enviar</button>
+        </div>
+
+    </div>
+
+    <!-- JS DEL CHATBOT -->
+    <script src="{% static 'js/chatbot.js' %}"></script>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

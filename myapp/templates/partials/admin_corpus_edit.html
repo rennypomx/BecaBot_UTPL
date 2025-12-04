@@ -1,0 +1,70 @@
+<div data-page="corpus-edit">
+{% load static %}
+<div class="header">
+    <h2><i class="bi bi-pencil"></i> Editar Corpus</h2>
+    <p class="text-muted mb-0">{{ corpus.name }}</p>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre del Corpus *</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ corpus.name }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="corpus_type" class="form-label">Tipo de Corpus *</label>
+                        <select class="form-select" id="corpus_type" name="corpus_type" required>
+                            <option value="becas" {% if corpus.corpus_type == 'becas' %}selected{% endif %}>Corpus de Becas</option>
+                            <option value="faqs" {% if corpus.corpus_type == 'faqs' %}selected{% endif %}>Preguntas Frecuentes</option>
+                            <option value="general" {% if corpus.corpus_type == 'general' %}selected{% endif %}>Datos Generales</option>
+                            <option value="custom" {% if corpus.corpus_type == 'custom' %}selected{% endif %}>Personalizado</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="description" name="description" rows="3">{{ corpus.description }}</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="version" class="form-label">Versión</label>
+                        <input type="text" class="form-control" id="version" name="version" value="{{ corpus.version }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Reemplazar Archivo (Opcional)</label>
+                        <input type="file" class="form-control" id="file" name="file" accept=".json">
+                        <small class="text-muted">
+                            Archivo actual: {{ corpus.file.name|default:"Sin archivo" }}
+                            <br>Deja vacío para mantener el archivo actual
+                        </small>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="is_active" name="is_active" {% if corpus.is_active %}checked{% endif %}>
+                        <label class="form-check-label" for="is_active">
+                            Corpus activo
+                        </label>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'admin_corpus_view' pk=corpus.pk %}" class="btn btn-secondary" data-link>
+                            <i class="bi bi-arrow-left"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-utpl">
+                            <i class="bi bi-check-circle"></i> Guardar Cambios
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

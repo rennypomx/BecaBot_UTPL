@@ -1,0 +1,134 @@
+<div data-page="scraping">
+<div class="header">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h2><i class="bi bi-arrow-repeat"></i> Historial de Actualizaciones</h2>
+            <p class="text-muted mb-0">Registro de actualizaciones de becas</p>
+        </div>
+
+        <form method="post" action="{% url 'admin_run_scraping' %}" id="scrapingForm">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-utpl">
+                <i class="bi bi-arrow-clockwise"></i> Ejecutar Actualización
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+
+        {% if logs %}
+        <!-- Tabla con historial -->
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Estado</th>
+                        <th>Fecha</th>
+                        <th>Becas Actualizadas</th>
+                        <th>Mensaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                    <tr>
+                        <td>
+                            {% if log.success %}
+                                <span class="badge bg-success">✓ Exitoso</span>
+                            {% else %}
+                                <span class="badge bg-danger">✗ Fallido</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ log.executed_at|date:"d/m/Y H:i:s" }}</td>
+                        <td>{{ log.num_becas }}</td>
+                        <td>{{ log.error_message|default:"-" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <!-- Estado vacío -->
+        <div class="text-center py-5">
+            <i class="bi bi-arrow-repeat" style="font-size: 4rem; color: #ccc;"></i>
+            <p class="text-muted mt-3">No hay registros de actualización.</p>
+
+            <form method="post" action="{% url 'admin_run_scraping' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-utpl">
+                    <i class="bi bi-arrow-clockwise"></i> Primera Actualización
+                </button>
+            </form>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<script>
+// Evitar que el SPA intercepte el formulario de scraping
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOMContentLoaded - Inicializando formulario de scraping');
+    handleScrapingForm();
+});
+
+document.addEventListener('spa:navigate', function() {
+    console.log('spa:navigate - Reinicializando formulario de scraping');
+    handleScrapingForm();
+});
+
+function handleScrapingForm() {
+    const form = document.getElementById('scrapingForm');
+    console.log('handleScrapingForm - Formulario encontrado:', form ? 'Sí' : 'No');
+    
+    if (form) {
+        // Clonar para limpiar listeners
+        const newForm = form.cloneNode(true);
+        form.parentNode.replaceChild(newForm, form);
+        
+        newForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Formulario enviado - Iniciando scraping');
+            
+            const btn = this.querySelector('button[type="submit"]');
+            const originalHTML = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Actualizando...';
+            
+            console.log('Botón actualizado a estado "Actualizando..."');
+            console.log('Enviando petición POST a:', this.action);
+            
+            // Enviar formulario
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+                credentials: 'same-origin'
+            })
+            .then(response => {
+                console.log('Respuesta recibida:', response.status, response.statusText);
+                console.log('Response redirected:', response.redirected);
+                
+                if (response.redirected) {
+                    console.log('Redirigiendo a:', response.url);
+                    window.location.href = response.url;
+                } else if (response.ok) {
+                    console.log('Recargando página...');
+                    window.location.reload();
+                } else {
+                    throw new Error('Response not ok: ' + response.status);
+                }
+            })
+            .catch(error => {
+                console.error('Error en scraping:', error);
+                btn.disabled = false;
+                btn.innerHTML = originalHTML;
+                alert('Error al ejecutar actualización: ' + error.message);
+            });
+        });
+        
+        console.log('Event listener agregado al formulario');
+    }
+}
+</script>
+</div>

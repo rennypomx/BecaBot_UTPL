@@ -1,0 +1,112 @@
+<div data-page="corpus-upload">
+{% load static %}
+<div class="header">
+    <h2><i class="bi bi-upload"></i> Subir Nuevo Corpus JSON</h2>
+    <p class="text-muted mb-0">Carga archivos JSON con datos para el sistema</p>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data" id="corpusUploadForm">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre del Corpus *</label>
+                        <input type="text" class="form-control" id="name" name="name" required placeholder="ej: becas_utpl_2024">
+                        <small class="text-muted">Identificador único del corpus</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="corpus_type" class="form-label">Tipo de Corpus *</label>
+                        <select class="form-select" id="corpus_type" name="corpus_type" required>
+                            <option value="becas">Corpus de Becas</option>
+                            <option value="faqs">Preguntas Frecuentes</option>
+                            <option value="general">Datos Generales</option>
+                            <option value="custom">Personalizado</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Describe el contenido del corpus..."></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="version" class="form-label">Versión</label>
+                        <input type="text" class="form-control" id="version" name="version" placeholder="ej: 1.0, 2024-Q1">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Archivo JSON *</label>
+                        <input type="file" class="form-control" id="file" name="file" accept=".json" required>
+                        <small class="text-muted">Solo archivos .json</small>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="is_active" name="is_active" checked>
+                        <label class="form-check-label" for="is_active">
+                            Activar corpus al subir
+                        </label>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'admin_corpus' %}" class="btn btn-secondary" data-link>
+                            <i class="bi bi-arrow-left"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-utpl">
+                            <i class="bi bi-upload"></i> Subir Corpus
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <!-- Help Card -->
+        <div class="card mt-3">
+            <div class="card-header bg-info text-white">
+                <i class="bi bi-info-circle"></i> Ayuda
+            </div>
+            <div class="card-body">
+                <h6>Formato del archivo JSON</h6>
+                <p>El archivo debe tener una estructura válida. Ejemplo:</p>
+
+<pre><code>[
+  {
+    "titulo": "Beca Internacional",
+    "descripcion": "Descripción de la beca...",
+    "requisitos": ["requisito 1", "requisito 2"],
+    "fecha_inicio": "2024-01-01"
+  }
+]
+</code></pre>
+
+                <p class="mb-0"><strong>Nota:</strong> El sistema validará automáticamente el formato y contará los registros.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Manejar envío del formulario
+document.addEventListener('DOMContentLoaded', initCorpusUploadForm);
+document.addEventListener('spa:navigate', initCorpusUploadForm);
+
+function initCorpusUploadForm() {
+    const form = document.getElementById('corpusUploadForm');
+    if (!form) return;
+    
+    // Remover listeners previos
+    const newForm = form.cloneNode(true);
+    form.parentNode.replaceChild(newForm, form);
+    
+    newForm.addEventListener('submit', function(e) {
+        const btn = this.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Subiendo...';
+    });
+}
+</script>
+</div>

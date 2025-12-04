@@ -1,0 +1,254 @@
+<div data-page="pdf">
+{% load static %}
+<div class="header">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h2><i class="bi bi-file-earmark-pdf"></i> Gestión de Documentos PDF</h2>
+            <p class="text-muted mb-0">Administra los documentos PDF del sistema</p>
+        </div>
+        <a href="{% url 'admin_pdf_upload' %}" class="btn btn-utpl" data-link>
+            <i class="bi bi-upload"></i> Subir Nuevo PDF
+        </a>
+    </div>
+</div>
+
+<!-- Filtros -->
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-3">
+                <select name="document_type" class="form-select">
+                    <option value="">Todos los tipos</option>
+                    <option value="report">Reporte</option>
+                    <option value="guide">Guía</option>
+                    <option value="manual">Manual</option>
+                    <option value="regulations">Reglamento</option>
+                    <option value="form">Formulario</option>
+                    <option value="other">Otro</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select name="status" class="form-select">
+                    <option value="">Todos los estados</option>
+                    <option value="draft">Borrador</option>
+                    <option value="published">Publicado</option>
+                    <option value="archived">Archivado</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select name="is_public" class="form-select">
+                    <option value="">Público/Privado</option>
+                    <option value="true">Públicos</option>
+                    <option value="false">Privados</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-secondary">
+                    <i class="bi bi-filter"></i> Filtrar
+                </button>
+                <a href="{% url 'admin_pdf' %}" class="btn btn-outline-secondary" data-link>
+                    <i class="bi bi-x-circle"></i> Limpiar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Lista de PDFs -->
+<div class="card">
+    <div class="card-body">
+
+        <!-- Si no hay PDFs -->
+        <!-- (Puedes eliminar esta sección si quieres solo tabla) -->
+        <div class="text-center py-5" style="display:none;">
+            <i class="bi bi-inbox" style="font-size: 4rem; color: #ccc;"></i>
+            <p class="text-muted mt-3">No hay documentos PDF registrados.</p>
+            <a href="{% url 'admin_pdf_upload' %}" class="btn btn-utpl" data-link>
+                <i class="bi bi-upload"></i> Subir Primer PDF
+            </a>
+        </div>
+
+        <!-- Tabla de PDFs -->
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Tipo</th>
+                        <th>Estado</th>
+                        <th>Público</th>
+                        <th>Tamaño</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if pdf_list %}
+                        {% for pdf in pdf_list %}
+                        <tr>
+                            <td><strong>{{ pdf.title }}</strong></td>
+                            <td>{{ pdf.get_document_type_display }}</td>
+                            <td>
+                                {% if pdf.status == 'published' %}
+                                    <span class="badge bg-success">{{ pdf.get_status_display }}</span>
+                                {% else %}
+                                    <span class="badge bg-warning">{{ pdf.get_status_display }}</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if pdf.is_public %}
+                                    <i class="bi bi-unlock text-success" title="Público"></i>
+                                {% else %}
+                                    <i class="bi bi-lock text-secondary" title="Privado"></i>
+                                {% endif %}
+                            </td>
+                            <td>{{ pdf.file_size|filesizeformat }}</td>
+                            <td>{{ pdf.created_at|date:"d/m/Y H:i" }}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="{% url 'admin_pdf_view' pk=pdf.pk %}" class="btn btn-info" title="Ver" data-link>
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a href="{% url 'admin_pdf_edit' pk=pdf.pk %}" class="btn btn-warning" title="Editar" data-link>
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    {% if pdf.file %}
+                                        <a href="{{ pdf.file.url }}" class="btn btn-success" title="Descargar" download>
+                                            <i class="bi bi-download"></i>
+                                        </a>
+                                    {% endif %}
+                                    <button type="button" class="btn btn-danger btn-delete-pdf" data-pdf-id="{{ pdf.pk }}" data-pdf-title="{{ pdf.title }}" title="Eliminar">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">
+                                No hay documentos PDF registrados.
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal único de eliminación (fuera del loop) -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar Eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de eliminar el documento <strong id="deletePdfTitle"></strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form method="post" action="" id="deleteForm" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Manejar eliminación de PDFs
+(function() {
+    function initDeleteButtons() {
+        console.log('Inicializando botones de eliminación');
+        
+        // Agregar event listeners a botones de eliminar
+        document.querySelectorAll('.btn-delete-pdf').forEach(btn => {
+            // Limpiar listeners anteriores clonando
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(newBtn, btn);
+        });
+        
+        document.querySelectorAll('.btn-delete-pdf').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const pdfId = this.getAttribute('data-pdf-id');
+                const pdfTitle = this.getAttribute('data-pdf-title');
+                
+                console.log('Botón eliminar clickeado:', pdfId, pdfTitle);
+                
+                // Actualizar el modal
+                document.getElementById('deletePdfTitle').textContent = pdfTitle;
+                document.getElementById('deleteForm').action = `/admin-panel/pdf/${pdfId}/delete/`;
+                
+                // Mostrar modal usando Bootstrap
+                const modalElement = document.getElementById('deleteModal');
+                const modal = new bootstrap.Modal(modalElement);
+                modal.show();
+            });
+        });
+        
+        // Manejar submit del formulario
+        const deleteForm = document.getElementById('deleteForm');
+        if (deleteForm) {
+            // Clonar para limpiar listeners
+            const newForm = deleteForm.cloneNode(true);
+            deleteForm.parentNode.replaceChild(newForm, deleteForm);
+            
+            newForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                console.log('Formulario submit:', this.action);
+                
+                const url = this.action;
+                const formData = new FormData(this);
+                
+                // Cerrar modal
+                const modalElement = document.getElementById('deleteModal');
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                if (modal) {
+                    modal.hide();
+                }
+                
+                // Enviar petición
+                fetch(url, {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'same-origin'
+                })
+                .then(response => {
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                    } else if (response.ok) {
+                        window.location.reload();
+                    } else {
+                        alert('Error al eliminar el documento');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al eliminar el documento');
+                });
+            });
+        }
+    }
+    
+    // Inicializar cuando el DOM está listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initDeleteButtons);
+    } else {
+        initDeleteButtons();
+    }
+    
+    // Re-inicializar después de navegación SPA
+    document.addEventListener('spa:navigate', function() {
+        setTimeout(initDeleteButtons, 200);
+    });
+})();
+</script>
+</div>

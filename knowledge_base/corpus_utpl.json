@@ -1,0 +1,443 @@
+[
+    {
+        "titulo": "Abanderados, Escoltas y Mejores Egresados",
+        "url": "https://becas.utpl.edu.ec/abanderados-escoltas-y-mejores-egresados",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca de Excelencia"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Excelencia",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea).",
+            "Porcentaje": "Hasta el 40%",
+            "Dirigida a": "Modalidad presencial:\nestudiantes que hayan obtenido la dignidad de abanderados de colegios fiscales, fiscomisionales y particulares: 40%\nModalidad a distancia o en línea:\nAbanderados y mejores egresados de colegios fiscales, fiscomisionales y particulares: 40%\nEscoltas de los estandartes nacional, provincial e institucional de colegios fiscales, fiscomisionales y particulares: 30%.\nAplica para toda la carrera.",
+            "Beneficiarios": "Abanderados y mejores egresados de colegios fiscales, fiscomisionales y particulares cuyo año de reconocimiento y graduación corresponda al año lectivo 2024-2025 (Régimen Sierra) y 2025-2026 (Régimen Costa)",
+            "Requisitos específicos": "Formulario de solicitud de beca\ndebidamente firmado por estudiante.\nPostular en línea\nCertificado o diploma de nombramiento de Abanderado, Mejor Egresado o Escolta, emitida por la Unidad Educativa o Ministerio de Educación.",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8,5/10 puntos del periodo espejo (abril - agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8,5/10 puntos del periodo en curso (octubre 2025 – febrero 2026)."
+        }
+    },
+    {
+        "titulo": "Centros de rehabilitación social",
+        "url": "https://becas.utpl.edu.ec/centros-de-rehabilitaci%C3%B3n-social",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca de Inclusión"
+        ],
+        "modalidades": [
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Inclusión",
+            "Aplica a": "Grado (Modalidad a distancia y en línea) y Tecnología.",
+            "Porcentaje": "40%",
+            "Dirigida a": "Estudiantes que se encuentran privados de su libertad en los diferentes centros de rehabilitación del país.\nLa documentación se actualizará cada 2 ciclos.",
+            "Beneficiarios": "Estudiantes de nuevo ingreso y de segundo ciclo en adelante que no hayan solicitado este tipo de beca.\nEstudiantes continuos que deseen renovar el mismo tipo de beca.",
+            "Requisitos específicos": "Formulario de solicitud de beca\ndebidamente firmado por estudiante.\nPostular en línea\nCertificado de buena conducta, el mismo que debe ser otorgado por el director del Centro de Rehabilitación al que pertenece o su delegado.",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8,5/10 puntos del periodo espejo   (abril - agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8,5/10 puntos del periodo en curso (octubre 2025 - febrero 2026)."
+        }
+    },
+    {
+        "titulo": "Convenio de Adjudicación",
+        "url": "https://becas.utpl.edu.ec/convenio",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca Estratégica"
+        ],
+        "modalidades": [
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Estratégica",
+            "Aplica a": "Grado (Modalidad presencial, Modalidad a distancia y en línea) y Posgrado (Maestría, Doctorado)",
+            "Porcentaje": "10% y 13% según el convenio registrado",
+            "Dirigida a": "Personal vinculado con la entidad.\nSocios de la entidad (en el caso de cooperativas).",
+            "Requisitos específicos": "Para el otorgamiento de este tipo de becas se debe declarar o demostrar la vinculación con la institución pública o privada con la que se tiene suscrito el convenio."
+        }
+    },
+    {
+        "titulo": "Deportistas Destacados",
+        "url": "https://becas.utpl.edu.ec/deportistas-destacados",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca de Excelencia"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Excelencia",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea).",
+            "Porcentaje": "20% Aplica a deportistas federados que pertenecen activamente a alguna federación provincial o nacional y deportistas destacados en disciplinas que no cuenten con federaciones a nivel nacional, previo al análisis de la Coordinación de Deportes, Cultura y Vida Saludable\n.\n50% Aplica a deportistas de alto rendimiento activos, que representan al país en eventos deportivos a nivel internacional.",
+            "Dirigida a": "Estudiantes deportistas de alto rendimiento o federados.\nLos documentos específicos serán renovados cada periodo académico.",
+            "Requisitos específicos": "Formulario de solicitud de beca\ndebidamente firmado por estudiante.\nPostular en línea\nCertificado de pertenecer a grupos de alto rendimiento deportivo o a federaciones nacionales o provinciales, otorgado por el organismo pertinente.\nCurrículum deportivo de los dos últimos años debidamente firmado y sellado por el organismo o federación a la que pertenece.",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8,5/10 puntos del periodo espejo (abril - agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8,5/10 puntos del periodo en curso (octubre 2025 - febrero 2026)."
+        }
+    },
+    {
+        "titulo": "Discapacidad",
+        "url": "https://becas.utpl.edu.ec/discapacidad",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca de Inclusión"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Inclusión",
+            "Aplica a": "Grado (Modalidad presencial, Modalidad a distancia y en línea),Tecnología y Posgrado (Maestría, Doctorado)",
+            "Porcentaje": "Grado:\nPorcentaje de discapacidad:\nDel 30% al 50% : Reciben el 20% de beca\nDel 51% al 70% : Reciben el 50% de beca\nDel 71% al 100%: Reciben el 70% de beca\nPosgrado:\nPorcentaje de discapacidad:\nDel 30% al 50% : Reciben el 10% de beca\nDel 51% al 70% : Reciben el 15% de beca\nDel 71% al 100%: Reciben el 20% de beca",
+            "Dirigida a": "Estudiantes con discapacidad, de acuerdo a lo establecido en la legislación ecuatoriana.",
+            "Beneficiarios": "Estudiantes de nuevo ingreso y de segundo ciclo en adelante que no hayan solicitado este tipo de beca.\nEstudiantes continuos que deseen renovar el mismo tipo de beca.",
+            "Requisitos específicos": "Formulario de solicitud de beca\ndebidamente firmado por estudiante.\nPostular en línea\nCédula de identidad del estudiante donde se contemple la discapacidad y porcentaje de la misma.",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8,5/10 puntos del periodo espejo (abril - agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8,5/10 puntos del periodo en curso (octubre 2025 - febrero 2026)."
+        }
+    },
+    {
+        "titulo": "Excelencia Académica",
+        "url": "https://becas.utpl.edu.ec/excelencia-acad%C3%A9mica",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca de Excelencia"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Excelencia",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea).",
+            "Porcentaje": "50%",
+            "Dirigida a": "Estudiantes actuales de la UTPL destacados en cada una de las carreras por su alto rendimiento académico (Se otorgará 1 beca por cada 250 estudiantes matriculados en el periodo espejo).\nBachilleres que hayan obtenido la máxima nota en la prueba de admisión\n(1 por cada titulación de modalidad presencial)\n. Aplica únicamente por un periodo académico.\nConsideración\n:\nEsta beca se asigna de forma automática.",
+            "Requisitos específicos": "Tener un promedio mayor o igual a 9.5/10 puntos y haberse matriculado en un mínimo de 3 componentes equivalentes a 30 créditos u 800 horas (en el caso de las carreras de rediseño) del periodo espejo (abril - agosto 2025) sujeto a validación de requisitos.\nEn caso de bachilleres se considerará la nota máxima de prueba de admisión."
+        }
+    },
+    {
+        "titulo": "Familiar",
+        "url": "https://becas.utpl.edu.ec/familiar",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca Estratégica"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Estratégica",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea).",
+            "Porcentaje": "Grado:\nHermano, hijo y/o cónyuge del estudiante 10%,\nHijos de docente UTPL 20%\nHijos representante del consejo superior 25%\nHijos de administrativos UTPL 30%",
+            "Dirigida a": "A la comunidad universitaria que tenga un familiar directo inscrito en la institución, unidos por lazos familiares: hermanos, hijos y cónyuges. (primer grado de consanguinidad)",
+            "Beneficiarios": "Estudiantes de nuevo ingreso y de segundo ciclo en adelante que no hayan solicitado este tipo de beca.\nEstudiantes continuos que deseen renovar el mismo tipo de beca.",
+            "Requisitos específicos": "Formulario de solicitud de beca\ndebidamente firmado por estudiante.\nPostular en línea\nCopia de cédula de identidad del estudiante.\nCopia de cédula de identidad del familiar directo que está matriculado en la UTPL (en cualquiera de las dos modalidades de estudio) y/o funcionario de la Universidad.",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8,5/10 puntos del periodo espejo (abril - agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8,5/10 puntos del periodo en curso (octubre 2025 - febrero 2026)."
+        }
+    },
+    {
+        "titulo": "Grupos de Arte",
+        "url": "https://becas.utpl.edu.ec/club-universitario",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca de Excelencia"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Excelencia",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea).",
+            "Porcentaje": "Hasta el 50%.",
+            "Dirigida a": "Estudiantes que formen parte de alguno de los grupos de arte de la UTPL. Se asignará de acuerdo a la evaluación del Área de Gestión Cultural.",
+            "Requisitos específicos": "Formulario de solicitud de beca\ndebidamente firmado por estudiante.\nPostular en línea",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8,5/10 puntos del periodo espejo (abril - agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8,5/10 puntos del periodo en curso (octubre 2025 - febrero 2026)."
+        }
+    },
+    {
+        "titulo": "Méritos Universitarios",
+        "url": "https://becas.utpl.edu.ec/meritos-universitarios",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca de Excelencia"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Excelencia",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea).",
+            "Porcentaje": "Hasta el 40%",
+            "Dirigida a": "Estudiantes que se han destacado en actividades académicas, investigativas y de vinculación con la sociedad, debidamente aprobadas por el Vicerrectorado Académico, Vicerrectorado de Modalidad Abierta y a Distancia y Vicerrectorado de Investigación.\nAplica por un periodo.",
+            "Requisitos específicos": "Formulario de solicitud de beca.\nPostular /Renovar en línea\nCertificado de beca emitido por la Dirección General de Misiones Universitarias."
+        }
+    },
+    {
+        "titulo": "Movilidad estudiantil",
+        "url": "https://becas.utpl.edu.ec/movilidad-estudiantil",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca Estratégica"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Estratégica",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea).",
+            "Porcentaje": "50% Estudiantes UTPL.\n100% Estudiantes extranjeros que realizan matrícula en la institución.",
+            "Dirigida a": "Estudiantes actuales que deseen realizar intercambios, prácticas o pasantías en universidades extranjeras aliadas a través del programa de movilidad estudiantil UTPL.",
+            "Beneficiarios": "Estudiantes UTPL que registren un mínimo de 150 créditos aprobados en su malla curricular/programa formativo.\nEstudiantes extranjeros que cumplan con los requisitos acordes a la política interna de Movilidad Estudiantil.",
+            "Requisitos específicos": "Formulario de solicitud de beca\ndebidamente firmado por estudiante.\nPostular en línea\nPara estudiantes UTPL – Outgoing",
+            "Requisitos para renovación de beca": "Aprobación de componentes y promedio de 8.5/10 del periodo espejo (abril - agosto 2025)"
+        }
+    },
+    {
+        "titulo": "Nivel de ingresos",
+        "url": "https://becas.utpl.edu.ec/nivel-de-ingresos",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca de Apoyo Económico"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Apoyo Económico",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea).",
+            "Porcentaje": "Grado\n: hasta el 70%",
+            "Dirigida a": "Estudiantes que por su nivel de ingresos familiares no pueden cubrir el costo de matrícula en su totalidad. Aplica en función del ingreso familiar percápita (ingreso de todo el núcleo familiar dividido para el número de cargas familiares).\nLos documentos específicos serán renovados cada dos ciclos o cuando la universidad lo solicite.",
+            "Beneficiarios": "Estudiantes de nuevo ingreso\nEstudiantes continuos que deseen renovar el mismo tipo de beca.\nIMPORTANTE:\nPara los estudiantes continuos de las carreras técnicas y tecnológicas, podrán renovar su beca de acuerdo al cumplimiento del requisito académico establecido y previa postulación/renovación de la misma.\nPara los estudiantes nuevos admitidos de la modalidad presencial la Beca Nivel de Ingresos se habilitará a los mejores puntuados en la prueba de admisión de la universidad, según los términos y condiciones establecidos en la normativa de la UTPL.",
+            "Requisitos específicos": "1. Formulario de solicitud de beca\ndebidamente firmado por estudiante.\nPostular en línea\n2.Cédulas de identidad del estudiante, su cónyuge o conviviente; y, de los miembros de su núcleo familiar hasta el primer grado de consanguinidad.\n3. Documentos legales de ingreso del núcleo familiar.\nSe considera documento legal de ingresos a:\nRoles de pago\ndel último sueldo con sellos y firmas de la empresa: presentan este documento todas las personas del núcleo familiar que se encuentren trabajando en el sector público o privado, bajo relación de dependencia  o reciban pensiones jubilares, monte pío, etc.\nDeclaración Juramentada\ndel estudiante, emitida en la fecha actual y correspondiente al período de postulación. En esta debe especificarse el monto mensual del ingreso familiar y la actividad económica que genera dicho ingreso, siguiendo el formato establecido a continuación.\nDescarga aquí el formato\nRevisa el proceso para llenar la declaración juramentada\nPresentan el documento de declaración juramentada todas las personas del núcleo familiar que:\nSe encuentren en edad hábil para trabajar y generen ingresos de manera informal.\nSe encuentren desempleados.\nPosean RUC activo, bajo el nuevo régimen RIMPE.\nPosean RUC activo y realicen sus declaraciones de impuesto a la renta o declaraciones mensuales del IVA con valor cero.\n4. Certificado del SRI, de registro o no del RUC del estudiante y su núcleo familiar (mayores de 18 años).\nIr a la pagina\n5. En caso de tener RUC presentar copia de la declaración de impuesto a la RENTA (anual) o del IVA (semestral).\n6. Documento de respaldo de recibir pensión alimenticia, si recibe como ayuda voluntaria o no la recibe, debe mencionarlo en la declaración juramentada mediante documento privado. (solo si aplica)\nIr a la pagina\n7. Certificado de afiliación o no al IESS del estudiante y de su núcleo familiar.\nIr a la pagina\n8. Certificado de calamidad doméstica: enfermedad catastrófica, familiar con discapacidad, defunción. (solo si aplica)",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8/10 puntos del periodo espejo (abril – agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8/10 puntos del periodo en curso (octubre 2025 - febrero 2026)."
+        }
+    },
+    {
+        "titulo": "Política de cuotas UTPL",
+        "url": "https://becas.utpl.edu.ec/pol%C3%ADtica-de-cuotas",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca de Apoyo Económico"
+        ],
+        "modalidades": [
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Apoyo Económico",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea).",
+            "Porcentaje": "80%",
+            "Dirigida a": "Estudiantes de nuevo ingreso a la universidad que provienen de grupos históricamente excluidos o discriminados, tales como aquellos con limitaciones económicas que reciben el bono de desarrollo humano, personas con discapacidad, miembros de los pueblos y nacionalidades del Ecuador, así como aquellos que padecen enfermedades catastróficas o terminales y que cumplan con alguna de las condiciones especificadas.\nImportante:\nLos beneficiarios de esta beca no podrán contar con título de tercer nivel registrado en la SENESCYT.\nLa asignación de la beca se hará de conformidad a la normativa vigente y los procesos de admisión y matrícula establecidos por los Vicerrectorados Académico y MAD en función del presupuesto destinado para el otorgamiento de la beca.\nLos beneficiarios de esta beca no podrán cambiarse de modalidad de estudios o carrera.",
+            "Requisitos específicos": "Generales:\nFormulario de solicitud de beca debidamente firmado por estudiante.\nPostular en línea\nEspecíficos:\nClasificación de Beneficiarios UTPL\n*Aplica para el postulante y los miembros de su núcleo familiar, conformado por parientes consanguíneos hasta el primer grado (padres o hijos).",
+            "Requisitos para renovación de beca": "La renovación de beca se encuentra sujeta al cumplimiento del requisito académico (aprobación de componentes y promedio de 8,5/10 puntos del periodo) y proceso de renovación/postulación de beca en el sistema."
+        }
+    },
+    {
+        "titulo": "Pueblos y Nacionalidades del Ecuador",
+        "url": "https://becas.utpl.edu.ec/pueblos-nacionalidades",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca de Inclusión"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Inclusión",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea) y Tecnología.",
+            "Porcentaje": "Grado: 20%",
+            "Dirigida a": "Estudiantes que pertenecen a los pueblos y nacionalidades del Ecuador.",
+            "Beneficiarios": "Estudiantes de nuevo ingreso y de segundo ciclo en adelante que no hayan solicitado este tipo de beca.\nEstudiantes continuos que deseen renovar el mismo tipo de beca.",
+            "Requisitos específicos": "Formulario de solicitud de beca\ndebidamente firmado por estudiante.\nPostular en línea\nCertificado otorgado por el líder, dirigente u organización del pueblo o nacionalidad del Ecuador a la que pertenece debidamente firmado y sellado por quien lo emite.",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8,5/10 puntos del periodo espejo (abril – agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8,5/10 puntos del periodo en curso (octubre 2025 - febrero 2026)."
+        }
+    },
+    {
+        "titulo": "Religiosos",
+        "url": "https://becas.utpl.edu.ec/religiosos",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca Estratégica"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Estratégica",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea).",
+            "Porcentaje": "Grado:\nDiócesis del país (inscritos en las carreras de Ciencias Humanas y Religiosas o Pedagogía de la Religión): 70%\nDiócesis del país (inscritos en otras carreras): 30%\nDiócesis de Loja (inscritos en otras carreras): 50%",
+            "Dirigida a": "Sacerdotes, religiosas y consagrados de las diferentes Diócesis del país.",
+            "Beneficiarios": "Estudiantes de nuevo ingreso y de segundo ciclo en adelante que no hayan solicitado este tipo de beca.\nEstudiantes continuos que deseen renovar el mismo tipo de beca.",
+            "Requisitos específicos": "Formulario de solicitud de beca\ndebidamente firmado por estudiante.\n(Imprimir el formulario en línea)\nCopia de cédula de identidad del estudiante o pasaporte (estudiante extranjero).\nCertificado de la congregación a la que pertenece con firma y sello bajo autorización del Sr. Obispo o delegado de la Diócesis a la que pertenece.\n*Este tipo de beca no aplica para becarios nuevos que sean laicos.",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8,5/10 puntos del periodo espejo (abril – agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8,5/10 puntos del periodo en curso (octubre 2025 - febrero 2026)."
+        }
+    },
+    {
+        "titulo": "Rendimiento Académico",
+        "url": "https://becas.utpl.edu.ec/rendimiento-academico",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca de Excelencia"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Excelencia",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea).",
+            "Porcentaje": "15%: aplica a estudiantes matriculados en 3 componentes o más, con promedio de 9/10 puntos.\nEstudiantes continuos (segundo ciclo en adelante), se evalúa el periodo espejo (abril– agosto 2025).\nEstudiantes de primer ciclo, se evalúa el periodo en curso (octubre 2025 - febrero 2026).",
+            "Beneficiarios": "Estudiantes que hayan obtenido un buen rendimiento académico en el periodo espejo (estudiantes continuos) y en curso (actual primer ciclo).\nConsideración:\nEsta beca se asigna de forma automática."
+        }
+    },
+    {
+        "titulo": "Representación estudiantil",
+        "url": "https://becas.utpl.edu.ec/representacion-estudiantil",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca de Excelencia"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Excelencia",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea).",
+            "Porcentaje": "Hasta el 90% (De acuerdo a la dignidad de representación) aplica para el periodo de elección.",
+            "Dirigida a": "Estudiantes pertenecientes a las diferentes dignidades de representación estudiantil. La asignación del porcentaje de beca será acorde a los criterios de evaluación interna de la instancia correspondiente.",
+            "Requisitos específicos": "Formulario de solicitud de beca debidamente firmado por estudiante.\nPostular en línea\nPresentar la certificación o documentación oficial que acredite la representación que ostenta.",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8,5/10 puntos del periodo espejo (abril – agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8,5/10 puntos del periodo en curso (octubre 2025 - febrero 2026)."
+        }
+    },
+    {
+        "titulo": "Responsabilidad Universitaria (Beca BRU)",
+        "url": "https://becas.utpl.edu.ec/bru",
+        "nivel": "Grado",
+        "tipos": [
+            "Beca de Excelencia"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Excelencia",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea).",
+            "Porcentaje": "Hasta el 70%.",
+            "Dirigida a": "Estudiantes que deseen vincularse en proyectos de gestión, académicos, innovación, investigación, vinculación y otros institucionales.\nBRU1:\nBecarios de gestión (30%).\nBRU2:\nApoyo en proyectos institucionales de tipo académico, investigación, innovación, vinculación y otros (40%).\nBRU3:\nDesarrollo e implementación de proyectos institucionales, académicos, vinculación, innovación y otros (50%).\nBAI:\nAyudantes de investigación (70%).",
+            "Beneficiarios": "Estudiantes de segundo ciclo en adelante.",
+            "Requisitos específicos": "Formulario de solicitud de beca (Imprimir el formulario en línea).\nPostular en línea\nInforme de resultados alcanzados en el proyecto y evaluación de desempeño del estudiante, debidamente firmado por el director del proyecto.\nBecarios de proyectos\nDescargar\nAyudante de Cátedra modalidad presencial\nDescargar\nAyudante de Cátedra modalidad a distancia y en línea\nDescargar",
+            "Requisitos para renovación de beca": "Ser estudiante regular con matrícula en grado modalidad presencial y/o modalidad a distancia y en línea, en el periodo académico abril - agosto 2025.\nHaber aprobado los porcentajes de avance requeridos o más de su malla curricular, para cada nivel de beca considerando hasta el periodo octubre 2024 - febrero 2025.\nHaber obtenido un promedio igual o mayor a 8,5/10 puntos y aprobación de todos los componentes matriculados en el ciclo anterior a la postulación.\nNo haber sido objeto de una sanción por parte de la Universidad."
+        }
+    },
+    {
+        "titulo": "Convenio de Adjudicación",
+        "url": "https://becas.utpl.edu.ec/convenio",
+        "nivel": "Posgrado",
+        "tipos": [
+            "Beca Estratégica"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Estratégica",
+            "Aplica a": "Grado (Modalidad presencial, Modalidad a distancia y en línea) y Posgrado (Maestría, Doctorado)",
+            "Porcentaje": "10% y 13% según el convenio registrado",
+            "Dirigida a": "Personal vinculado con la entidad.\nSocios de la entidad (en el caso de cooperativas).",
+            "Requisitos específicos": "Para el otorgamiento de este tipo de becas se debe declarar o demostrar la vinculación con la institución pública o privada con la que se tiene suscrito el convenio."
+        }
+    },
+    {
+        "titulo": "Discapacidad",
+        "url": "https://becas.utpl.edu.ec/discapacidad",
+        "nivel": "Posgrado",
+        "tipos": [
+            "Beca de Inclusión"
+        ],
+        "modalidades": [
+            "Presencial",
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Inclusión",
+            "Aplica a": "Grado (Modalidad presencial, Modalidad a distancia y en línea),Tecnología y Posgrado (Maestría, Doctorado)",
+            "Porcentaje": "Grado:\nPorcentaje de discapacidad:\nDel 30% al 50% : Reciben el 20% de beca\nDel 51% al 70% : Reciben el 50% de beca\nDel 71% al 100%: Reciben el 70% de beca\nPosgrado:\nPorcentaje de discapacidad:\nDel 30% al 50% : Reciben el 10% de beca\nDel 51% al 70% : Reciben el 15% de beca\nDel 71% al 100%: Reciben el 20% de beca",
+            "Dirigida a": "Estudiantes con discapacidad, de acuerdo a lo establecido en la legislación ecuatoriana.",
+            "Beneficiarios": "Estudiantes de nuevo ingreso y de segundo ciclo en adelante que no hayan solicitado este tipo de beca.\nEstudiantes continuos que deseen renovar el mismo tipo de beca.",
+            "Requisitos específicos": "Formulario de solicitud de beca\ndebidamente firmado por estudiante.\nPostular en línea\nCédula de identidad del estudiante donde se contemple la discapacidad y porcentaje de la misma.",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8,5/10 puntos del periodo espejo (abril - agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8,5/10 puntos del periodo en curso (octubre 2025 - febrero 2026)."
+        }
+    },
+    {
+        "titulo": "Centros de rehabilitación social",
+        "url": "https://becas.utpl.edu.ec/centros-de-rehabilitaci%C3%B3n-social",
+        "nivel": "Tecnologías",
+        "tipos": [
+            "Beca de Inclusión"
+        ],
+        "modalidades": [
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Inclusión",
+            "Aplica a": "Grado (Modalidad a distancia y en línea) y Tecnología.",
+            "Porcentaje": "40%",
+            "Dirigida a": "Estudiantes que se encuentran privados de su libertad en los diferentes centros de rehabilitación del país.\nLa documentación se actualizará cada 2 ciclos.",
+            "Beneficiarios": "Estudiantes de nuevo ingreso y de segundo ciclo en adelante que no hayan solicitado este tipo de beca.\nEstudiantes continuos que deseen renovar el mismo tipo de beca.",
+            "Requisitos específicos": "Formulario de solicitud de beca\ndebidamente firmado por estudiante.\nPostular en línea\nCertificado de buena conducta, el mismo que debe ser otorgado por el director del Centro de Rehabilitación al que pertenece o su delegado.",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8,5/10 puntos del periodo espejo   (abril - agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8,5/10 puntos del periodo en curso (octubre 2025 - febrero 2026)."
+        }
+    },
+    {
+        "titulo": "Discapacidad",
+        "url": "https://becas.utpl.edu.ec/discapacidad",
+        "nivel": "Tecnologías",
+        "tipos": [
+            "Beca de Inclusión"
+        ],
+        "modalidades": [
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Inclusión",
+            "Aplica a": "Grado (Modalidad presencial, Modalidad a distancia y en línea),Tecnología y Posgrado (Maestría, Doctorado)",
+            "Porcentaje": "Grado:\nPorcentaje de discapacidad:\nDel 30% al 50% : Reciben el 20% de beca\nDel 51% al 70% : Reciben el 50% de beca\nDel 71% al 100%: Reciben el 70% de beca\nPosgrado:\nPorcentaje de discapacidad:\nDel 30% al 50% : Reciben el 10% de beca\nDel 51% al 70% : Reciben el 15% de beca\nDel 71% al 100%: Reciben el 20% de beca",
+            "Dirigida a": "Estudiantes con discapacidad, de acuerdo a lo establecido en la legislación ecuatoriana.",
+            "Beneficiarios": "Estudiantes de nuevo ingreso y de segundo ciclo en adelante que no hayan solicitado este tipo de beca.\nEstudiantes continuos que deseen renovar el mismo tipo de beca.",
+            "Requisitos específicos": "Formulario de solicitud de beca\ndebidamente firmado por estudiante.\nPostular en línea\nCédula de identidad del estudiante donde se contemple la discapacidad y porcentaje de la misma.",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8,5/10 puntos del periodo espejo (abril - agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8,5/10 puntos del periodo en curso (octubre 2025 - febrero 2026)."
+        }
+    },
+    {
+        "titulo": "Pueblos y Nacionalidades del Ecuador",
+        "url": "https://becas.utpl.edu.ec/pueblos-nacionalidades",
+        "nivel": "Tecnologías",
+        "tipos": [
+            "Beca de Inclusión"
+        ],
+        "modalidades": [
+            "Abierta y a Distancia"
+        ],
+        "contenido": {
+            "Tipo de beca": "Inclusión",
+            "Aplica a": "Grado (Modalidad presencial y Modalidad a distancia y en línea) y Tecnología.",
+            "Porcentaje": "Grado: 20%",
+            "Dirigida a": "Estudiantes que pertenecen a los pueblos y nacionalidades del Ecuador.",
+            "Beneficiarios": "Estudiantes de nuevo ingreso y de segundo ciclo en adelante que no hayan solicitado este tipo de beca.\nEstudiantes continuos que deseen renovar el mismo tipo de beca.",
+            "Requisitos específicos": "Formulario de solicitud de beca\ndebidamente firmado por estudiante.\nPostular en línea\nCertificado otorgado por el líder, dirigente u organización del pueblo o nacionalidad del Ecuador a la que pertenece debidamente firmado y sellado por quien lo emite.",
+            "Requisitos para renovación de beca": "Formulario de renovación de beca.\nRenovación en línea\nEstudiantes continuos:\naprobación de componentes y promedio de 8,5/10 puntos del periodo espejo (abril – agosto 2025).\nEstudiantes de primer ciclo:\naprobación de componentes y promedio de 8,5/10 puntos del periodo en curso (octubre 2025 - febrero 2026)."
+        }
+    }
+]

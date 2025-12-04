@@ -1,0 +1,328 @@
+/* =========================================
+   VARIABLES GLOBALES – PALETA UTPL
+========================================= */
+:root {
+    --color-azul-oscuro: #003F72;
+    --color-azul-medio: #0A3155;
+    --color-amarillo: #FFC700;
+    --color-amarillo-oscuro: #E0B200;
+    --color-blanco: #FFFFFF;
+    --color-gris-claro: #F5F7FA;
+
+    --font-primary: "Roboto Condensed", sans-serif;
+}
+
+/* =========================================
+   CHATBOT – BOTÓN FLOTANTE
+========================================= */
+
+#chatbot-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: var(--color-azul-medio);
+    color: var(--color-blanco);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    transition: 0.3s ease;
+    z-index: 9999;
+}
+
+#chatbot-btn:hover {
+    transform: scale(1.12);
+    background: var(--color-azul-oscuro);
+}
+
+/* =========================================
+   VENTANA DEL CHATBOT
+========================================= */
+
+#chatbot-box {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    width: 340px;
+    max-height: 500px;
+    background: var(--color-blanco);
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   CABECERA DEL CHAT
+========================================= */
+
+#chatbot-header {
+    background: var(--color-azul-oscuro);
+    color: var(--color-blanco);
+    padding: 12px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.chat-title i {
+    font-size: 20px;
+    color: var(--color-amarillo);
+}
+
+#chatbot-close {
+    cursor: pointer;
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+#chatbot-close:hover {
+    opacity: 1;
+}
+
+/* =========================================
+   CONTENEDOR DE MENSAJES
+========================================= */
+
+#chatbot-messages {
+    flex: 1;
+    padding: 10px;
+    background: var(--color-gris-claro);
+    overflow-y: auto;
+}
+
+/* Wrapper que contiene avatar + burbuja */
+.message-wrapper {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 12px;
+}
+
+/* Bot → avatar izquierda */
+.message-wrapper.bot .avatar {
+    margin-right: 8px;
+}
+
+/* Usuario → avatar derecha */
+.message-wrapper.user {
+    flex-direction: row-reverse;
+}
+
+.message-wrapper.user .avatar {
+    margin-left: 8px;
+}
+
+/* Avatar */
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+/* =========================================
+   BURBUJAS DE MENSAJE
+========================================= */
+
+.message {
+    padding: 10px 12px;
+    border-radius: 10px;
+    max-width: 75%;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Bot */
+.message.bot {
+    background: #e8edf3;
+    color: var(--color-azul-medio);
+}
+
+/* Usuario */
+.message.user {
+    background: var(--color-azul-oscuro);
+    color: var(--color-blanco);
+}
+
+/* Estilos para contenido Markdown dentro de mensajes */
+.message p {
+    margin: 5px 0;
+}
+
+.message ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.message li {
+    margin: 5px 0;
+    list-style-type: disc;
+}
+
+.message strong {
+    font-weight: 700;
+    color: inherit;
+}
+
+/* Asegurar que las listas en mensajes del bot se vean bien */
+.message.bot ul {
+    color: var(--color-azul-medio);
+}
+
+.message.bot strong {
+    color: var(--color-azul-oscuro);
+}
+
+/* =========================================
+   TIMESTAMP
+========================================= */
+
+.timestamp {
+    display: block;
+    font-size: 10px;
+    color: #777;
+    margin-top: 3px;
+    text-align: right;
+}
+
+/* =========================================
+   INPUT AREA
+========================================= */
+
+#chatbot-input-area {
+    display: flex;
+    padding: 10px;
+    background: var(--color-blanco);
+    border-top: 1px solid #ddd;
+}
+
+#chatbot-input {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 14px;
+}
+
+#chatbot-send {
+    background: var(--color-amarillo);
+    color: var(--color-azul-oscuro);
+    border: none;
+    margin-left: 8px;
+    padding: 0 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#chatbot-send:hover {
+    background: var(--color-amarillo-oscuro);
+}
+
+#chatbot-voice {
+    background: var(--color-azul-oscuro);
+    color: var(--color-blanco);
+    border: none;
+    margin-left: 8px;
+    padding: 0 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#chatbot-voice:hover {
+    background: var(--color-azul-medio);
+}
+
+#chatbot-voice.listening {
+    background: #E53935 !important; 
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 480px) {
+    #chatbot-box {
+        width: 90%;
+        right: 5%;
+    }
+
+    #chatbot-btn {
+        bottom: 18px;
+        right: 18px;
+    }
+}
+
+/* =========================================
+   INDICADOR DE ESCRITURA (TYPING DOTS)
+========================================= */
+
+.typing-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 12px 16px;
+    background: #e8edf3;
+    border-radius: 10px;
+    max-width: 60px;
+}
+
+.typing-dots span {
+    width: 8px;
+    height: 8px;
+    background: var(--color-azul-medio);
+    border-radius: 50%;
+    animation: typing-bounce 1.4s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing-bounce {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    30% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}

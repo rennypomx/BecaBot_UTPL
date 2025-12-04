@@ -1,0 +1,25 @@
+
+Django==6.0
+
+langchain==0.1.13
+langchain-community==0.0.38
+langchain-google-genai==0.0.11
+
+# Base de datos vectorial
+chromadb==0.5.0
+
+# Procesamiento de documentos
+pypdf==4.1.0
+PyPDF2==3.0.1
+
+# Web Scraping
+beautifulsoup4==4.14.3
+requests==2.32.3
+lxml==5.3.0
+
+# Configuración
+python-dotenv==1.0.1
+
+# Modelo de IA (Google Gemini)
+google-generativeai==0.7.2
+

@@ -1,0 +1,257 @@
+<div data-page="messages">
+<div class="header">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h2><i class="bi bi-chat-dots"></i> Historial de Mensajes</h2>
+            <p class="text-muted mb-0">Monitorea las conversaciones del chatbot</p>
+        </div>
+        <div>
+            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#clearMessagesModal">
+                <i class="bi bi-trash"></i> Limpiar Todo
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Estadísticas -->
+<div class="row mb-3">
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h3 class="mb-0">{{ stats.total_messages }}</h3>
+                <small class="text-muted">Mensajes Totales</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h3 class="mb-0">{{ stats.total_sessions }}</h3>
+                <small class="text-muted">Sesiones</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h3 class="mb-0 text-primary">{{ stats.human_messages }}</h3>
+                <small class="text-muted">Mensajes Usuario</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h3 class="mb-0 text-success">{{ stats.ai_messages }}</h3>
+                <small class="text-muted">Respuestas IA</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filtros -->
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label">Sesión</label>
+                <select name="session" class="form-select">
+                    <option value="">Todas las sesiones</option>
+                    {% for session in sessions %}
+                    <option value="{{ session.session_key }}" {% if filters.session == session.session_key %}selected{% endif %}>
+                        {{ session.session_key|slice:":16" }}... ({{ session.message_count }} mensajes)
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Rol</label>
+                <select name="role" class="form-select">
+                    <option value="">Todos</option>
+                    <option value="human" {% if filters.role == 'human' %}selected{% endif %}>Usuario</option>
+                    <option value="ai" {% if filters.role == 'ai' %}selected{% endif %}>IA</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Buscar</label>
+                <input type="text" name="search" class="form-control" placeholder="Buscar en mensajes..." value="{{ filters.search }}">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">&nbsp;</label>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="bi bi-filter"></i> Filtrar
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="mt-2">
+            <a href="{% url 'admin_messages' %}" class="btn btn-sm btn-outline-secondary">
+                <i class="bi bi-x-circle"></i> Limpiar Filtros
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Mensajes -->
+<div class="card">
+    <div class="card-body">
+
+        {% if messages_list %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 150px;">Sesión</th>
+                        <th style="width: 100px;">Rol</th>
+                        <th>Mensaje</th>
+                        <th style="width: 150px;">Fecha</th>
+                        <th style="width: 80px;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for message in messages_list %}
+                    <tr>
+                        <td>
+                            <code style="font-size: 0.75rem;">{{ message.session_key|slice:":12" }}...</code>
+                        </td>
+                        <td>
+                            {% if message.role == 'human' %}
+                                <span class="badge bg-primary">Usuario</span>
+                            {% elif message.role == 'ai' %}
+                                <span class="badge bg-success">IA</span>
+                            {% else %}
+                                <span class="badge bg-secondary">{{ message.role }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <div style="max-width: 500px; overflow: hidden; text-overflow: ellipsis;">
+                                {{ message.content|truncatewords:20 }}
+                            </div>
+                        </td>
+                        <td>
+                            <small>{{ message.created_at|date:"d/m/Y H:i:s" }}</small>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-info btn-view-message" 
+                                    data-message-id="{{ message.id }}"
+                                    data-message-content="{{ message.content|escapejs }}"
+                                    data-message-role="{{ message.role }}"
+                                    data-message-session="{{ message.session_key }}"
+                                    data-message-date="{{ message.created_at|date:'d/m/Y H:i:s' }}"
+                                    title="Ver completo">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="mt-3">
+            <small class="text-muted">
+                Mostrando los últimos {{ messages_list|length }} mensajes
+                {% if filters.session or filters.role or filters.search %}
+                    (filtrados)
+                {% endif %}
+            </small>
+        </div>
+        {% else %}
+        <!-- Mensaje cuando no hay datos -->
+        <div class="text-center py-5">
+            <i class="bi bi-chat-dots" style="font-size: 4rem; color: #ccc;"></i>
+            <p class="text-muted mt-3">No hay mensajes registrados.</p>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<!-- Modal para ver mensaje completo -->
+<div class="modal fade" id="viewMessageModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Mensaje Completo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <strong>Sesión:</strong> <code id="viewMessageSession"></code>
+                </div>
+                <div class="mb-3">
+                    <strong>Rol:</strong> <span id="viewMessageRole"></span>
+                </div>
+                <div class="mb-3">
+                    <strong>Fecha:</strong> <span id="viewMessageDate"></span>
+                </div>
+                <div class="mb-3">
+                    <strong>Contenido:</strong>
+                    <div id="viewMessageContent" style="background: #f8f9fa; padding: 15px; border-radius: 5px; white-space: pre-wrap; max-height: 400px; overflow-y: auto;"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para limpiar todos los mensajes -->
+<div class="modal fade" id="clearMessagesModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar Limpieza</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de eliminar TODOS los mensajes del historial?
+                <br><br>
+                <span class="text-danger"><strong>Esta acción no se puede deshacer.</strong></span>
+                <br><br>
+                Se eliminarán {{ stats.total_messages }} mensajes de {{ stats.total_sessions }} sesiones.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form method="post" action="{% url 'admin_messages_clear' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Eliminar Todo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Manejar visualización de mensajes completos
+document.addEventListener('DOMContentLoaded', initMessageView);
+document.addEventListener('spa:navigate', initMessageView);
+
+function initMessageView() {
+    const viewButtons = document.querySelectorAll('.btn-view-message');
+    const modal = new bootstrap.Modal(document.getElementById('viewMessageModal'));
+    
+    viewButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const content = this.getAttribute('data-message-content');
+            const role = this.getAttribute('data-message-role');
+            const session = this.getAttribute('data-message-session');
+            const date = this.getAttribute('data-message-date');
+            
+            document.getElementById('viewMessageContent').textContent = content;
+            document.getElementById('viewMessageSession').textContent = session;
+            document.getElementById('viewMessageDate').textContent = date;
+            
+            const roleBadge = role === 'human' 
+                ? '<span class="badge bg-primary">Usuario</span>'
+                : '<span class="badge bg-success">IA</span>';
+            document.getElementById('viewMessageRole').innerHTML = roleBadge;
+            
+            modal.show();
+        });
+    });
+}
+</script>
+</div>

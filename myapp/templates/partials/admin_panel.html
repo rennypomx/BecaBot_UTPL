@@ -1,0 +1,217 @@
+<!-- Statistics Cards -->
+<div class="row">
+    <div class="col-md-3">
+        <div class="card stat-card">
+            <div class="card-body text-center">
+                <i class="bi bi-file-earmark-code" style="font-size: 3rem;"></i>
+                <h3>{{ stats.total_corpus|default:0 }}</h3>
+                <p class="mb-0">Corpus JSON</p>
+                <small class="text-white-50">{{ stats.active_corpus|default:0 }} activos</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <div class="card-body text-center">
+                <i class="bi bi-file-earmark-pdf" style="font-size: 3rem;"></i>
+                <h3>{{ stats.total_pdfs|default:0 }}</h3>
+                <p class="mb-0">Documentos PDF</p>
+                <small class="text-white-50">{{ stats.public_pdfs|default:0 }} públicos</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            <div class="card-body text-center">
+                <i class="bi bi-chat-dots" style="font-size: 3rem;"></i>
+                <h3>{{ stats.total_messages|default:0 }}</h3>
+                <p class="mb-0">Mensajes</p>
+                <small class="text-white-50">{{ stats.active_sessions|default:0 }} sesiones</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+            <div class="card-body text-center">
+                <i class="bi bi-arrow-repeat" style="font-size: 3rem;"></i>
+                <h3>{{ stats.total_scrapings|default:0 }}</h3>
+                <p class="mb-0">Actualizaciones</p>
+                <small class="text-white-50">{{ stats.total_size_mb|default:0 }} MB usados</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="mb-0"><i class="bi bi-lightning-fill text-warning"></i> Acciones Rápidas</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 text-center mb-3">
+                        <a href="{% url 'admin_corpus_upload' %}" class="btn btn-utpl w-100 nav-ajax" data-link>
+                            <i class="bi bi-upload"></i><br>Subir Corpus JSON
+                        </a>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <a href="{% url 'admin_pdf_upload' %}" class="btn btn-utpl w-100 nav-ajax" data-link>
+                            <i class="bi bi-file-earmark-arrow-up"></i><br>Subir PDF
+                        </a>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <form method="post" action="{% url 'admin_run_scraping' %}" id="quickScrapingForm">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-utpl w-100">
+                                <i class="bi bi-arrow-clockwise"></i><br>Actualizar Becas
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <a href="{% url 'admin_messages' %}" class="btn btn-utpl w-100 nav-ajax" data-link>
+                            <i class="bi bi-chat-dots"></i><br>Ver Mensajes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Activity -->
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="mb-0"><i class="bi bi-clock-history"></i> Últimas Actualizaciones de Corpus</h5>
+            </div>
+            <div class="card-body">
+                {% if recent_corpus %}
+                    <div class="list-group">
+                        {% for corpus in recent_corpus %}
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <strong>{{ corpus.name }}</strong>
+                                <span class="badge {% if corpus.is_active %}bg-success{% else %}bg-secondary{% endif %}">
+                                    {% if corpus.is_active %}Activo{% else %}Inactivo{% endif %}
+                                </span>
+                            </div>
+                            <small class="text-muted">{{ corpus.created_at|date:"d/m/Y H:i" }}</small>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted mb-0">No hay corpus registrados.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="mb-0"><i class="bi bi-file-earmark-pdf"></i> Últimos Documentos PDF</h5>
+            </div>
+            <div class="card-body">
+                {% if recent_pdfs %}
+                    <div class="list-group">
+                        {% for pdf in recent_pdfs %}
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <strong>{{ pdf.title }}</strong>
+                                <span class="badge bg-info">{{ pdf.get_status_display }}</span>
+                            </div>
+                            <small class="text-muted">{{ pdf.created_at|date:"d/m/Y H:i" }}</small>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted mb-0">No hay documentos PDF registrados.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- System Status -->
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="mb-0"><i class="bi bi-info-circle"></i> Estado del Sistema</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p><strong>Corpus Activos:</strong> {{ stats.active_corpus|default:0 }}</p>
+                        <p><strong>PDFs Públicos:</strong> {{ stats.public_pdfs|default:0 }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Última Actualización:</strong> 
+                            {% if last_scraping %}{{ last_scraping.executed_at|date:"d/m/Y H:i" }}{% else %}Nunca{% endif %}
+                        </p>
+                        <p><strong>Becas en Sistema:</strong> 
+                            {% if last_scraping %}{{ last_scraping.num_becas }}{% else %}0{% endif %}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Espacio Usado:</strong> {{ stats.total_size_mb|default:0 }} MB</p>
+                        <p><strong>Sesiones Activas:</strong> {{ stats.active_sessions|default:0 }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Manejar formulario de scraping rápido desde dashboard
+document.addEventListener('DOMContentLoaded', initQuickScraping);
+document.addEventListener('spa:navigate', initQuickScraping);
+
+function initQuickScraping() {
+    const form = document.getElementById('quickScrapingForm');
+    if (!form) return;
+    
+    // Limpiar listeners previos
+    const newForm = form.cloneNode(true);
+    form.parentNode.replaceChild(newForm, form);
+    
+    newForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const btn = this.querySelector('button[type="submit"]');
+        const originalHTML = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="bi bi-hourglass-split"></i><br>Actualizando...';
+        
+        console.log('Ejecutando scraping desde dashboard...');
+        
+        fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this),
+            credentials: 'same-origin'
+        })
+        .then(response => {
+            console.log('Respuesta del scraping:', response.status);
+            if (response.redirected) {
+                // Redirigir a la página de scraping para ver el resultado
+                window.location.href = response.url;
+            } else if (response.ok) {
+                // Recargar el dashboard para ver las estadísticas actualizadas
+                window.location.reload();
+            } else {
+                throw new Error('Error en la respuesta: ' + response.status);
+            }
+        })
+        .catch(error => {
+            console.error('Error al ejecutar scraping:', error);
+            btn.disabled = false;
+            btn.innerHTML = originalHTML;
+            alert('Error al ejecutar la actualización. Por favor, intenta desde la sección de Scraping.');
+        });
+    });
+}
+</script>

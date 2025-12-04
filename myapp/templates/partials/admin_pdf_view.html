@@ -1,0 +1,96 @@
+<div data-page="pdf-view">
+{% load static %}
+<div class="header">
+    <h2><i class="bi bi-eye"></i> Ver Documento PDF</h2>
+    <p class="text-muted mb-0">Detalles del documento</p>
+</div>
+
+{% if pdf %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">{{ pdf.title }}</h5>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <th style="width: 30%;">Tipo:</th>
+                        <td>{{ pdf.get_document_type_display }}</td>
+                    </tr>
+                    <tr>
+                        <th>Estado:</th>
+                        <td>
+                            {% if pdf.status == 'published' %}
+                                <span class="badge bg-success">{{ pdf.get_status_display }}</span>
+                            {% else %}
+                                <span class="badge bg-warning">{{ pdf.get_status_display }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Visibilidad:</th>
+                        <td>
+                            {% if pdf.is_public %}
+                                <i class="bi bi-unlock text-success"></i> Público
+                            {% else %}
+                                <i class="bi bi-lock text-secondary"></i> Privado
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Descripción:</th>
+                        <td>{{ pdf.description|default:"Sin descripción" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tamaño:</th>
+                        <td>{{ pdf.file_size|filesizeformat }}</td>
+                    </tr>
+                    <tr>
+                        <th>Procesado en VectorDB:</th>
+                        <td>
+                            {% if pdf.processed_for_vectordb %}
+                                <i class="bi bi-check-circle text-success"></i> Sí
+                            {% else %}
+                                <i class="bi bi-x-circle text-danger"></i> No
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Fecha de creación:</th>
+                        <td>{{ pdf.created_at|date:"d/m/Y H:i:s" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Última actualización:</th>
+                        <td>{{ pdf.updated_at|date:"d/m/Y H:i:s" }}</td>
+                    </tr>
+                </table>
+                
+                <div class="d-flex justify-content-between mt-3">
+                    <a href="{% url 'admin_pdf' %}" class="btn btn-secondary" data-link>
+                        <i class="bi bi-arrow-left"></i> Volver
+                    </a>
+                    <div>
+                        {% if pdf.file %}
+                            <a href="{{ pdf.file.url }}" class="btn btn-success" download>
+                                <i class="bi bi-download"></i> Descargar
+                            </a>
+                        {% endif %}
+                        <a href="{% url 'admin_pdf_edit' pk=pdf.pk %}" class="btn btn-warning" data-link>
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="alert alert-danger">
+    Documento no encontrado
+</div>
+<a href="{% url 'admin_pdf' %}" class="btn btn-secondary" data-link>
+    <i class="bi bi-arrow-left"></i> Volver a la lista
+</a>
+{% endif %}
+</div>

@@ -1,0 +1,144 @@
+<div data-page="corpus-view">
+{% load static %}
+<div class="header">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h2><i class="bi bi-eye"></i> Detalles del Corpus</h2>
+            <p class="text-muted mb-0">{{ corpus.name }}</p>
+        </div>
+        <div>
+            <a href="{% url 'admin_corpus_edit' pk=corpus.pk %}" class="btn btn-warning" data-link>
+                <i class="bi bi-pencil"></i> Editar
+            </a>
+            <a href="{% url 'admin_corpus' %}" class="btn btn-secondary" data-link>
+                <i class="bi bi-arrow-left"></i> Volver
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">Información del Corpus</h5>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <th width="200">Nombre:</th>
+                        <td>{{ corpus.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tipo:</th>
+                        <td><span class="badge bg-primary">{{ corpus.get_corpus_type_display }}</span></td>
+                    </tr>
+                    <tr>
+                        <th>Estado:</th>
+                        <td>
+                            {% if corpus.is_active %}
+                                <span class="badge bg-success">Activo</span>
+                            {% else %}
+                                <span class="badge bg-secondary">Inactivo</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Versión:</th>
+                        <td>{{ corpus.version|default:"-" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Descripción:</th>
+                        <td>{{ corpus.description|default:"-" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Registros:</th>
+                        <td>{{ corpus.records_count|default:"0" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tamaño:</th>
+                        <td>{{ corpus.file_size|filesizeformat }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fecha de carga:</th>
+                        <td>{{ corpus.created_at|date:"d/m/Y H:i" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Creado por:</th>
+                        <td>{{ corpus.created_by|default:"Sistema" }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Preview del JSON -->
+        {% if preview_data %}
+        <div class="card mt-3">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">Vista Previa del Contenido</h5>
+            </div>
+            <div class="card-body">
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; max-height: 400px; overflow-y: auto;">{{ preview_data|safe }}</pre>
+                <small class="text-muted">Mostrando los primeros registros del archivo</small>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">Acciones</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    {% if corpus.file %}
+                    <a href="{{ corpus.file.url }}" class="btn btn-success" download>
+                        <i class="bi bi-download"></i> Descargar
+                    </a>
+                    {% endif %}
+                    <a href="{% url 'admin_corpus_edit' pk=corpus.pk %}" class="btn btn-warning" data-link>
+                        <i class="bi bi-pencil"></i> Editar
+                    </a>
+                    
+                    <form method="post" action="{% url 'admin_corpus_toggle' pk=corpus.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-secondary w-100">
+                            <i class="bi {% if corpus.is_active %}bi-pause{% else %}bi-play{% endif %}"></i> 
+                            {% if corpus.is_active %}Desactivar{% else %}Activar{% endif %}
+                        </button>
+                    </form>
+                    
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        <i class="bi bi-trash"></i> Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmación de eliminación -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar Eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de eliminar el corpus <strong>{{ corpus.name }}</strong>?
+                <br><br>
+                <span class="text-danger">Esta acción no se puede deshacer.</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form method="post" action="{% url 'admin_corpus_delete' pk=corpus.pk %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

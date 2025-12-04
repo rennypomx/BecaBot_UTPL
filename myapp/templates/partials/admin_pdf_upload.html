@@ -1,0 +1,99 @@
+<div data-page="pdf-upload">
+{% load static %}
+<div class="header">
+    <h2><i class="bi bi-upload"></i> Subir Nuevo Documento PDF</h2>
+    <p class="text-muted mb-0">Carga documentos PDF para el sistema</p>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data" id="pdfUploadForm">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Título del Documento *</label>
+                        <input type="text" class="form-control" id="title" name="title" required placeholder="ej: Manual de Becas 2024">
+                        <small class="text-muted">Nombre descriptivo del documento</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="document_type" class="form-label">Tipo de Documento *</label>
+                        <select class="form-select" id="document_type" name="document_type" required>
+                            <option value="report">Reporte</option>
+                            <option value="guide">Guía</option>
+                            <option value="manual">Manual</option>
+                            <option value="regulations">Reglamento</option>
+                            <option value="form">Formulario</option>
+                            <option value="other">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Describe el contenido del documento..."></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Archivo PDF *</label>
+                        <input type="file" class="form-control" id="file" name="file" accept=".pdf" required>
+                        <small class="text-muted">Solo archivos .pdf</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Estado</label>
+                        <select class="form-select" id="status" name="status">
+                            <option value="draft">Borrador</option>
+                            <option value="published" selected>Publicado</option>
+                            <option value="archived">Archivado</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="is_public" name="is_public" checked>
+                        <label class="form-check-label" for="is_public">
+                            Documento público (visible para usuarios)
+                        </label>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'admin_pdf' %}" class="btn btn-secondary" data-link>
+                            <i class="bi bi-arrow-left"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-utpl">
+                            <i class="bi bi-upload"></i> Subir Documento
+                        </button>
+                    </div>
+
+                </form>
+                
+                <script>
+                // Evitar que el SPA intercepte el submit del formulario
+                document.getElementById('pdfUploadForm').addEventListener('submit', function(e) {
+                    // Permitir el submit normal del formulario
+                    // No llamar a e.preventDefault()
+                    console.log('Enviando formulario de PDF...');
+                });
+                </script>
+            </div>
+        </div>
+
+        <!-- Help Card -->
+        <div class="card mt-3">
+            <div class="card-header bg-info text-white">
+                <i class="bi bi-info-circle"></i> Información
+            </div>
+            <div class="card-body">
+                <h6>Recomendaciones</h6>
+                <ul>
+                    <li>Tamaño máximo recomendado: 10 MB</li>
+                    <li>Asegúrate de que el PDF sea legible y esté optimizado</li>
+                    <li>Los documentos públicos serán visibles para todos los usuarios</li>
+                    <li>Puedes cambiar la visibilidad después de subirlo</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
